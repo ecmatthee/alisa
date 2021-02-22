@@ -20,7 +20,7 @@ shell_settings(){
 
 # Configure variables
 declare_globals(){
-    git_repo="git@gitlab.com:ecmatthee/dotfiles"
+    git_repo="git@github.com:ecmatthee/dotfiles"
 
     #Tmp folder
     script_tmp=$(mktemp -q -d)
