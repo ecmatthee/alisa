@@ -79,6 +79,7 @@ syncthing-gtk
 
 # Tools
 audacity
+calcurse
 handbrake
 kdenlive
 keepassxc
@@ -166,10 +167,10 @@ Defaults   timestamp_timeout=60
 # sudo session accross terminals
 Defaults !tty_tickets
 EOF
-    ) > "$sudo_custom"
+) > "$sudo_custom"
 
 # Pacman config
-    (
+(
 cat << EOF
 # Misc
 Color
@@ -178,7 +179,7 @@ ILoveCandy
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 EOF
-    ) > "$pacman_custom"
+) > "$pacman_custom"
 }
 
 main_menu(){
@@ -188,24 +189,24 @@ main_menu(){
 
     select choice in "${choices[@]}"; do
 
-    [[ -n $choice ]] || { echo "Invalid choice." >&2; continue; }
-    case $choice in
-    Yes)
-        echo "System setup starting..."
+        [[ -n $choice ]] || { echo "Invalid choice." >&2; continue; }
+        case $choice in
+            Yes)
+                echo "System setup starting..."
 
-        folder_system_create
-        package_download
-        git_dotfiles
-        system_setup
+                folder_system_create
+                package_download
+                git_dotfiles
+                system_setup
 
-        echo "System setup complete"
-    ;;
-    Cancel)
-        echo "Exiting. "
-        exit 0
-    esac
-  break
-done
+                echo "System setup complete"
+                ;;
+            Cancel)
+                echo "Exiting. "
+                exit 0
+        esac
+        break
+    done
 }
 
 folder_system_create(){
@@ -218,16 +219,11 @@ folder_system_create(){
 
     mkdir ~/proj         # Non coding projects
     mkdir ~/dev          # Project directory
-    mkdir ~/dev/whizbang # Opus Magnus
 
     mkdir ~/cloud_mount  # Mount point for rclone
     mkdir ~/tmp          # Dump folder --> feel free to rm -rf
 
-    mkdir ~/root                            # Personal files directory
-    mkdir ~/root/arc                        # Archive Directory
-    mkdir ~/root/data                       # Personal data files
-    mkdir ~/root/doc                        # Documents
-    mkdir ~/root/misc                       # Anything else worth storing
+    mkdir ~/root        # Personal files directory
 }
 
 package_download(){
